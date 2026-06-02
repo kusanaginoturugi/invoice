@@ -17,6 +17,7 @@ default dates use the `yyyy/MM/dd` format.
 invoice generate --from "株式会社テスト" --to "山田太郎" \
     --item "作業費" --quantity 2 --rate 25000 \
     --currency JPY --note "備考です"
+    --date "2026/06/30" --due "2026/7/31"
 ```
 
 <img src="assets/demo-ja.gif" width="600" />
