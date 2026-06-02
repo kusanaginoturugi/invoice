@@ -43,14 +43,14 @@ type Invoice struct {
 func DefaultInvoice() Invoice {
 	return Invoice{
 		Id:         time.Now().Format("20060102"),
-		Title:      "INVOICE",
+		Title:      "請求書",
 		Rates:      []float64{25},
 		Quantities: []int{2},
 		Items:      []string{"Paper Cranes"},
 		From:       "Project Folded, Inc.",
 		To:         "Untitled Corporation, Inc.",
-		Date:       time.Now().Format("Jan 02, 2006"),
-		Due:        time.Now().AddDate(0, 0, 14).Format("Jan 02, 2006"),
+		Date:       time.Now().Format("2006/01/02"),
+		Due:        time.Now().AddDate(0, 0, 14).Format("2006/01/02"),
 		Tax:        0,
 		Discount:   0,
 		Currency:   "USD",
@@ -69,7 +69,7 @@ func init() {
 
 	generateCmd.Flags().StringVar(&importPath, "import", "", "Imported file (.json/.yaml)")
 	generateCmd.Flags().StringVar(&file.Id, "id", time.Now().Format("20060102"), "ID")
-	generateCmd.Flags().StringVar(&file.Title, "title", "INVOICE", "Title")
+	generateCmd.Flags().StringVar(&file.Title, "title", defaultInvoice.Title, "Title")
 
 	generateCmd.Flags().Float64SliceVarP(&file.Rates, "rate", "r", defaultInvoice.Rates, "Rates")
 	generateCmd.Flags().IntSliceVarP(&file.Quantities, "quantity", "q", defaultInvoice.Quantities, "Quantities")

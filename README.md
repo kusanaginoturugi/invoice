@@ -8,7 +8,8 @@ Generate invoices from the command line.
 
 This fork embeds a Japanese TrueType font so generated invoices can display
 Japanese text. For JPY invoices, amounts are formatted without fractional digits
-and use the `円` suffix.
+and use the `円` suffix. Invoice labels are localized for Japanese output, and
+default dates use the `yyyy/MM/dd` format.
 
 ## Command Line Interface
 

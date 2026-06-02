@@ -17,10 +17,10 @@ const (
 )
 
 const (
-	subtotalLabel = "Subtotal"
-	discountLabel = "Discount"
-	taxLabel      = "Tax"
-	totalLabel    = "Total"
+	subtotalLabel = "小計"
+	discountLabel = "割引"
+	taxLabel      = "税"
+	totalLabel    = "合計"
 )
 
 func writeLogo(pdf *gopdf.GoPdf, logo string, from string) {
@@ -73,7 +73,7 @@ func writeDueDate(pdf *gopdf.GoPdf, due string) {
 	_ = pdf.SetFont("Inter", "", 9)
 	pdf.SetTextColor(75, 75, 75)
 	pdf.SetX(rateColumnOffset)
-	_ = pdf.Cell(nil, "Due Date")
+	_ = pdf.Cell(nil, "支払期限")
 	pdf.SetTextColor(0, 0, 0)
 	_ = pdf.SetFontSize(11)
 	pdf.SetX(amountColumnOffset - 15)
@@ -84,7 +84,7 @@ func writeDueDate(pdf *gopdf.GoPdf, due string) {
 func writeBillTo(pdf *gopdf.GoPdf, to string) {
 	pdf.SetTextColor(75, 75, 75)
 	_ = pdf.SetFont("Inter", "", 9)
-	_ = pdf.Cell(nil, "BILL TO")
+	_ = pdf.Cell(nil, "請求先")
 	pdf.Br(18)
 	pdf.SetTextColor(75, 75, 75)
 
@@ -108,13 +108,13 @@ func writeBillTo(pdf *gopdf.GoPdf, to string) {
 func writeHeaderRow(pdf *gopdf.GoPdf) {
 	_ = pdf.SetFont("Inter", "", 9)
 	pdf.SetTextColor(55, 55, 55)
-	_ = pdf.Cell(nil, "ITEM")
+	_ = pdf.Cell(nil, "品目")
 	pdf.SetX(quantityColumnOffset)
-	_ = pdf.Cell(nil, "QTY")
+	_ = pdf.Cell(nil, "数量")
 	pdf.SetX(rateColumnOffset)
-	_ = pdf.Cell(nil, "RATE")
+	_ = pdf.Cell(nil, "単価")
 	pdf.SetX(amountColumnOffset)
-	_ = pdf.Cell(nil, "AMOUNT")
+	_ = pdf.Cell(nil, "金額")
 	pdf.Br(24)
 }
 
@@ -123,7 +123,7 @@ func writeNotes(pdf *gopdf.GoPdf, notes string) {
 
 	_ = pdf.SetFont("Inter", "", 9)
 	pdf.SetTextColor(55, 55, 55)
-	_ = pdf.Cell(nil, "NOTES")
+	_ = pdf.Cell(nil, "備考")
 	pdf.Br(18)
 	_ = pdf.SetFont("Inter", "", 9)
 	pdf.SetTextColor(0, 0, 0)
