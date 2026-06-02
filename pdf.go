@@ -154,15 +154,13 @@ func writeRow(pdf *gopdf.GoPdf, item string, quantity int, rate float64) {
 	pdf.SetTextColor(0, 0, 0)
 
 	total := float64(quantity) * rate
-	amount := strconv.FormatFloat(total, 'f', 2, 64)
-
 	_ = pdf.Cell(nil, item)
 	pdf.SetX(quantityColumnOffset)
 	_ = pdf.Cell(nil, strconv.Itoa(quantity))
 	pdf.SetX(rateColumnOffset)
-	_ = pdf.Cell(nil, currencySymbols[file.Currency]+strconv.FormatFloat(rate, 'f', 2, 64))
+	_ = pdf.Cell(nil, formatCurrency(file.Currency, rate))
 	pdf.SetX(amountColumnOffset)
-	_ = pdf.Cell(nil, currencySymbols[file.Currency]+amount)
+	_ = pdf.Cell(nil, formatCurrency(file.Currency, total))
 	pdf.Br(24)
 }
 
@@ -190,7 +188,7 @@ func writeTotal(pdf *gopdf.GoPdf, label string, total float64) {
 	if label == totalLabel {
 		_ = pdf.SetFont("Inter-Bold", "", 11.5)
 	}
-	_ = pdf.Cell(nil, currencySymbols[file.Currency]+strconv.FormatFloat(total, 'f', 2, 64))
+	_ = pdf.Cell(nil, formatCurrency(file.Currency, total))
 	pdf.Br(24)
 }
 

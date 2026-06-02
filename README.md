@@ -7,10 +7,9 @@ Generate invoices from the command line.
 ## Command Line Interface
 
 ```bash
-invoice generate --from "Dream, Inc." --to "Imagine, Inc." \
-    --item "Rubber Duck" --quantity 2 --rate 25 \
-    --tax 0.13 --discount 0.15 \
-    --note "For debugging purposes."
+invoice generate --from "株式会社テスト" --to "山田太郎" \
+    --item "作業費" --quantity 2 --rate 25000 \
+    --currency JPY --note "備考です"
 ```
 
 <img src="https://vhs.charm.sh/vhs-66CMd4UQuXkuxX9djHUnGX.gif" width="600" />
@@ -22,7 +21,7 @@ with `--output`.
 open invoice.pdf
 ```
 
-<img width="574" alt="Example invoice" src="https://github.com/maaslalani/nap/assets/42545625/13153de2-dfa1-41e6-a18e-4d3a5cea5b74">
+<img width="574" alt="Japanese example invoice" src="assets/example-invoice-ja.png">
 
 ### Environment
 
@@ -30,20 +29,19 @@ Save repeated information with environment variables:
 
 ```bash
 export INVOICE_LOGO=/path/to/image.png
-export INVOICE_FROM="Dream, Inc."
-export INVOICE_TO="Imagine, Inc."
-export INVOICE_TAX=0.13
-export INVOICE_RATE=25
+export INVOICE_FROM="株式会社テスト"
+export INVOICE_TO="山田太郎"
+export INVOICE_RATE=25000
+export INVOICE_CURRENCY=JPY
 ```
 
 Generate new invoice:
 
 ```bash
 invoice generate \
-    --item "Yellow Rubber Duck" --quantity 5 \
-    --item "Special Edition Plaid Rubber Duck" --quantity 1 \
-    --note "For debugging purposes." \
-    --output duck-invoice.pdf
+    --item "作業費" --quantity 2 \
+    --note "備考です" \
+    --output japanese-invoice.pdf
 ```
 
 ### Configuration File
@@ -53,12 +51,13 @@ Or, save repeated information with JSON / YAML:
 ```json
 {
     "logo": "/path/to/image.png",
-    "from": "Dream, Inc.",
-    "to": "Imagine, Inc.",
-    "tax": 0.13,
-    "items": ["Yellow Rubber Duck", "Special Edition Plaid Rubber Duck"],
-    "quantities": [5, 1],
-    "rates": [25, 25],
+    "from": "株式会社テスト",
+    "to": "山田太郎",
+    "currency": "JPY",
+    "items": ["作業費"],
+    "quantities": [2],
+    "rates": [25000],
+    "note": "備考です"
 }
 ```
 
@@ -66,7 +65,7 @@ Generate new invoice by importing the configuration file:
 
 ```bash
 invoice generate --import path/to/data.json \
-    --output duck-invoice.pdf
+    --output japanese-invoice.pdf
 ```
 
 ### Custom Templates

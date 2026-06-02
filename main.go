@@ -13,11 +13,11 @@ import (
 	"github.com/spf13/viper"
 )
 
-//go:embed "Inter/Inter Variable/Inter.ttf"
-var interFont []byte
+//go:embed "fonts/Jigmo.ttf"
+var jigmoFont []byte
 
-//go:embed "Inter/Inter Hinted for Windows/Desktop/Inter-Bold.ttf"
-var interBoldFont []byte
+//go:embed "fonts/Jigmo.ttf"
+var jigmoBoldFont []byte
 
 type Invoice struct {
 	Id    string `json:"id" yaml:"id"`
@@ -116,12 +116,12 @@ var generateCmd = &cobra.Command{
 		})
 		pdf.SetMargins(40, 40, 40, 40)
 		pdf.AddPage()
-		err := pdf.AddTTFFontData("Inter", interFont)
+		err := pdf.AddTTFFontData("Inter", jigmoFont)
 		if err != nil {
 			return err
 		}
 
-		err = pdf.AddTTFFontData("Inter-Bold", interBoldFont)
+		err = pdf.AddTTFFontData("Inter-Bold", jigmoBoldFont)
 		if err != nil {
 			return err
 		}
