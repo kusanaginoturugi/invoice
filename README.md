@@ -4,6 +4,12 @@
 
 Generate invoices from the command line.
 
+## Japanese Support
+
+This fork embeds a Japanese TrueType font so generated invoices can display
+Japanese text. For JPY invoices, amounts are formatted without fractional digits
+and use the `円` suffix.
+
 ## Command Line Interface
 
 ```bash
@@ -12,7 +18,7 @@ invoice generate --from "株式会社テスト" --to "山田太郎" \
     --currency JPY --note "備考です"
 ```
 
-<img src="https://vhs.charm.sh/vhs-66CMd4UQuXkuxX9djHUnGX.gif" width="600" />
+<img src="assets/demo-ja.gif" width="600" />
 
 View the generated PDF at `invoice.pdf`, you can customize the output location
 with `--output`.
