@@ -27,7 +27,7 @@ func formatCurrency(currency string, amount float64) string {
 
 	formatted := strconv.FormatFloat(amount, 'f', digits, 64)
 	if currency == "JPY" {
-		return formatted + "円"
+		return formatted + " 円"
 	}
 
 	return currencySymbols[currency] + formatted
