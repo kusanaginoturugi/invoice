@@ -1,6 +1,9 @@
 package main
 
-import "strconv"
+import (
+	"strconv"
+	"strings"
+)
 
 var currencySymbols = map[string]string{
 	"USD": "$",
@@ -25,10 +28,33 @@ func formatCurrency(currency string, amount float64) string {
 		digits = value
 	}
 
-	formatted := strconv.FormatFloat(amount, 'f', digits, 64)
+	formatted := formatNumber(strconv.FormatFloat(amount, 'f', digits, 64))
 	if currency == "JPY" {
 		return formatted + " 円"
 	}
 
 	return currencySymbols[currency] + formatted
+}
+
+func formatNumber(amount string) string {
+	sign := ""
+	if strings.HasPrefix(amount, "-") {
+		sign = "-"
+		amount = strings.TrimPrefix(amount, "-")
+	}
+
+	integerPart, fractionalPart, hasFraction := strings.Cut(amount, ".")
+	var grouped strings.Builder
+	for i, digit := range integerPart {
+		if i > 0 && (len(integerPart)-i)%3 == 0 {
+			grouped.WriteByte(',')
+		}
+		grouped.WriteRune(digit)
+	}
+
+	if hasFraction {
+		return sign + grouped.String() + "." + fractionalPart
+	}
+
+	return sign + grouped.String()
 }

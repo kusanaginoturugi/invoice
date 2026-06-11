@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">showway simple symbol</title>
+  <desc id="desc">A minimalist line-only symbol showing a path illuminated by a light in darkness.</desc>
+
+  <defs>
+    <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <style>
+      .line {
+        fill: none;
+        stroke: #f7f1df;
+        stroke-width: 22;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        vector-effect: non-scaling-stroke;
+      }
+      .thin {
+        fill: none;
+        stroke: #f7f1df;
+        stroke-width: 18;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        vector-effect: non-scaling-stroke;
+      }
+      .bg {
+        fill: #050607;
+      }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1024" height="1024"/>
+
+  <g filter="url(#softGlow)">
+    <!-- horizon / darkness boundary -->
+    <path class="thin" d="M210 586 C335 528, 430 508, 512 508 C594 508, 689 528, 814 586"/>
+
+    <!-- illuminated path -->
+    <path class="line" d="M430 900 C500 760, 575 696, 512 620 C480 580, 500 542, 512 508"/>
+    <path class="line" d="M594 900 C520 760, 447 696, 512 620 C544 580, 524 542, 512 508"/>
+
+    <!-- guiding light -->
+    <path class="line" d="M512 470 L512 350"/>
+    <path class="thin" d="M512 286 L512 226"/>
+    <path class="thin" d="M458 306 L416 264"/>
+    <path class="thin" d="M566 306 L608 264"/>
+    <path class="thin" d="M436 360 L376 360"/>
+    <path class="thin" d="M588 360 L648 360"/>
+  </g>
+</svg>

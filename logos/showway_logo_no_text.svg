@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200" role="img" aria-label="showway logo icon without text">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="39%" r="68%">
+      <stop offset="0%" stop-color="#151512"/>
+      <stop offset="48%" stop-color="#070807"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+
+    <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="4" result="blur1"/>
+      <feGaussianBlur stdDeviation="12" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="strongGlow" x="-90%" y="-90%" width="280%" height="280%">
+      <feGaussianBlur stdDeviation="5" result="blur1"/>
+      <feGaussianBlur stdDeviation="22" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <style>
+      .line {
+        fill: none;
+        stroke: #fffaf0;
+        stroke-width: 9;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        filter: url(#softGlow);
+      }
+      .thin {
+        fill: none;
+        stroke: #fffaf0;
+        stroke-width: 7;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        filter: url(#softGlow);
+      }
+      .beacon {
+        fill: none;
+        stroke: #fffaf0;
+        stroke-width: 10;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        filter: url(#strongGlow);
+      }
+    </style>
+  </defs>
+
+  <rect width="1200" height="1200" fill="url(#bg)"/>
+
+  <!-- Emblem -->
+  <g transform="translate(0,-30)">
+    <!-- open circle -->
+    <path class="line" d="M 464 657 A 205 205 0 1 1 736 657"/>
+
+    <!-- horizon / hill line -->
+    <path class="line" d="M 405 570 C 485 545, 535 528, 600 528 C 665 528, 715 545, 795 570"/>
+
+    <!-- illuminated winding path -->
+    <path class="line" d="M 395 758 C 455 704, 525 683, 574 653 C 608 633, 607 617, 574 599 C 527 573, 529 548, 595 532 C 608 529, 615 522, 615 510"/>
+    <path class="line" d="M 745 758 C 688 716, 655 692, 676 650 C 698 607, 673 580, 612 562 C 583 553, 579 543, 604 532 C 617 526, 622 519, 622 506"/>
+
+    <!-- beacon / light source -->
+    <path class="beacon" d="M 600 512 L 600 425"/>
+    <path class="beacon" d="M 600 425 L 600 405"/>
+    <path class="beacon" d="M 568 441 L 542 415"/>
+    <path class="beacon" d="M 632 441 L 658 415"/>
+    <path class="beacon" d="M 555 455 L 515 455"/>
+    <path class="beacon" d="M 645 455 L 685 455"/>
+
+    <!-- small bright cap at beacon base -->
+    <path class="beacon" d="M 592 425 Q 600 416 608 425"/>
+  </g>
+</svg>

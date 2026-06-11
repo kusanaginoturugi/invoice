@@ -52,6 +52,21 @@ invoice generate \
     --output japanese-invoice.pdf
 ```
 
+### Estimate
+
+Generate an estimate without creating accounting data:
+
+```bash
+invoice estimate \
+    --from "株式会社テスト" --to "山田太郎" \
+    --item "作業費" --quantity 1 --rate 50000 \
+    --currency JPY --due "2026/07/11" \
+    --output estimate.pdf
+```
+
+The estimate command uses `見積書`, `見積先`, and `見積有効期限` by default.
+It accepts the same flags and JSON/YAML import format as `generate`.
+
 ### Configuration File
 
 Or, save repeated information with JSON / YAML:
