@@ -47,7 +47,9 @@ Generate new invoice:
 
 ```bash
 invoice generate \
-    --item "作業費" --quantity 2 \
+    --item "作業費" \
+    --detail "管理画面の改修\nPDF出力対応" \
+    --quantity 2 \
     --note "備考です" \
     --output japanese-invoice.pdf
 ```
@@ -67,6 +69,9 @@ invoice estimate \
 The estimate command uses `見積書`, `見積先`, and `見積有効期限` by default.
 It accepts the same flags and JSON/YAML import format as `generate`.
 
+Japanese text is rendered with GenEi Koburi Mincho. The bundled font is
+licensed under the SIL Open Font License 1.1; see `fonts/OFL.txt`.
+
 ### Configuration File
 
 Or, save repeated information with JSON / YAML:
@@ -78,6 +83,7 @@ Or, save repeated information with JSON / YAML:
     "to": "山田太郎",
     "currency": "JPY",
     "items": ["作業費"],
+    "details": ["管理画面の改修\nPDF出力対応"],
     "quantities": [2],
     "rates": [25000],
     "note": "備考です"
